@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, navigate, withPrefix } from 'gatsby'
 import styled from 'styled-components'
 
+import Header from '../components/header'
+import Blogs from '../components/blogs'
 import Layout from '../components/layout'
 
 const TwoColumnWrapper = styled.div`
@@ -11,26 +13,6 @@ const TwoColumnWrapper = styled.div`
     grid-gap: 20px;
   }
 `
-const Blog = ({ title, path, body }) =>
-  <div onClick={ () => navigate('/' + path) } role="link" tabIndex={0}>
-    <h3 className='accent'>{ title }</h3>
-    <p>{ body }</p>
-  </div>
-
-const Blogs = () =>
-  <>
-    <h2>Blogs</h2>
-    <TwoColumnWrapper>
-    <Blog
-      path=''
-      title='Automate your library releases with Fastlane'
-      body='Today we’ll look into automating a CocoaPods library releases with fastlane. This post is part of a small series about automating these type of tasks. On upcoming posts, we’ll look…'/>
-    <Blog
-      path=''
-      title='Replicating the iOS 11 App Store search tab'
-      body='Lately I’ve been working with UI Search Controller for a friends open source app and decided to share the approach we took to replicate the App Store search functionality…'/>
-    </TwoColumnWrapper>
-  </>
 
 const ProjectWrapper = styled.div`
   position: relative;
@@ -114,13 +96,18 @@ const IconizedList = styled.ul`
 `
 
 const IndexPage = () =>
+  <>
+  <Header/>
   <Layout>
     <IconizedList>
       <li><img src='/Twitter.svg'/>@marcosgriselli</li>
       <li><img src='/Swift.svg'/>iOS Developer</li>
       <li><img src='/Location.svg'/>Buenos Aires, Argentina (GMT-3)</li>
     </IconizedList>
-    <Blogs/>
+    <h2>Blogs</h2>
+    <TwoColumnWrapper>
+      <Blogs/>
+    </TwoColumnWrapper>
     <OpenSource/>
     <TwoColumnWrapper>
       <Talks/>
@@ -128,5 +115,6 @@ const IndexPage = () =>
     </TwoColumnWrapper>
     <HireMe/>
   </Layout>
+  </>
 
 export default IndexPage
