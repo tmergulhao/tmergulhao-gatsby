@@ -121,45 +121,6 @@ const Content = styled.div`
       color: ${props => props.theme.linkHover};
     }
   }
-
-  code{
-    font-size: 18px;
-  }
-
-  @media (max-width: 740px){
-    font-size: 18px;
-    padding: 0 40px;
-
-    .Content {
-      margin: 50px 20px;
-    }
-    p{
-      font-size: 18px;
-    }
-    h2{
-      font-size: 30px;
-    }
-    h3{
-      font-size: 22px;
-    }
-    blockquote {
-      margin: 0;
-      p {
-        font-size: 20px;
-      }
-    }
-
-  }
-
-  @media (max-width: 414px) {
-      padding: 0 20px;
-      blockquote {
-        margin: 0;
-        p {
-          font-size: 20px;
-        }
-      }
-  }
 `
 
 const TwoColumnWrapper = styled.div`
