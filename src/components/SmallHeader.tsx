@@ -2,19 +2,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { Wrapper } from './header'
+import { Wrapper, StyledLink } from './header'
 
 const Header = () =>
   <Wrapper>
     <Smaller>
       <h1 style={{ fontSize: '2em' }}>
-        <Link
-          to="/"
-          style={{
-            color: 'hsla(0, 0%, 0%, 0.8)',
-            textDecoration: 'none',
-          }}
-        >mar.<span style={{ color: 'hsl(8, 84%, 58%)' }}>codes</span></Link>
+        <StyledLink to="/">
+          mar.<span>codes</span>
+        </StyledLink>
       </h1>
     </Smaller>
   </Wrapper>

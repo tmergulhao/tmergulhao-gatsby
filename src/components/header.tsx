@@ -6,13 +6,9 @@ const Header = () =>
   <Wrapper>
     <div>
       <h1>
-        <Link
-          to="/"
-          style={{
-            color: 'hsla(0, 0%, 0%, 0.8)',
-            textDecoration: 'none',
-          }}
-        >mar.<span style={{ color: 'hsl(8, 84%, 58%)' }}>codes</span></Link>
+        <StyledLink to="/">
+          mar.<span>codes</span>
+        </StyledLink>
       </h1>
       <p>Marcos Griselli website and portfolio</p>
     </div>
@@ -27,5 +23,13 @@ export const Wrapper = styled.div`
     max-width: 670px;
     padding: 1.45rem 1.0875rem 0em;
     padding-top: 6rem;
+  }
+`
+
+export const StyledLink = styled(Link)`
+  color: hsla(0, 0%, 0%, 0.8);
+  text-decoration: none;
+  span {
+    color: hsl(8, 84%, 58%);
   }
 `
