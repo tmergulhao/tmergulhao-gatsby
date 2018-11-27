@@ -22,9 +22,13 @@ progress {
 [hidden], template {
   display: none;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 p > a, li > a, .accent {
   color: hsl(8, 84%, 58%);
-  text-decoration: none;
+
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
