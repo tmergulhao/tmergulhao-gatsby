@@ -9,7 +9,7 @@ const Header = () =>
     <Smaller>
       <h1 style={{ fontSize: '2em' }}>
         <StyledLink to="/">
-          mar.<span>codes</span>
+          tmergulhao
         </StyledLink>
       </h1>
     </Smaller>

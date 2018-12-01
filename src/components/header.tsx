@@ -7,10 +7,10 @@ const Header = () =>
     <div>
       <h1>
         <StyledLink to="/">
-          mar.<span>codes</span>
+          tmergulhao
         </StyledLink>
       </h1>
-      <p>Marcos Griselli website and portfolio</p>
+      <p>Tiago Mergulhão's website and portfolio</p>
     </div>
   </Wrapper>
 
@@ -29,7 +29,4 @@ export const Wrapper = styled.div`
 export const StyledLink = styled(Link)`
   color: hsla(0, 0%, 0%, 0.8);
   text-decoration: none;
-  span {
-    color: hsl(8, 84%, 58%);
-  }
 `

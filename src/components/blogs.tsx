@@ -22,7 +22,9 @@ const Blogs = () =>
         }
     }
     `}
-    render={({ blogs }) => blogs.edges
+    render={data =>
+        !data.blogs ? null :
+        data.blogs.edges
         .map(a => a.node)
         .map(({
             slug,

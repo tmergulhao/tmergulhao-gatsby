@@ -21,7 +21,10 @@ const ProjectWrapper = styled.a`
     margin-left: 0;
   }
   h3 {
-    color: hsl(8, 84%, 58%);
+    color: #1EAED6;
+  }
+  p:first-child {
+    margin-bottom: 0;
   }
 `
 
@@ -34,6 +37,8 @@ const IconizedList = styled.div`
   ul > li > img {
     margin-bottom: -2px;
     margin-right: 8px;
+    width: 20px;
+    height: 20px;
   }
   li > a {
     color: inherit;

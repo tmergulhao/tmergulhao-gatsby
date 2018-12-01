@@ -27,7 +27,7 @@ progress {
   color: inherit;
 }
 p > a, li > a, .accent {
-  color: hsl(8, 84%, 58%);
+  color: #1EAED6;
 
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -248,7 +248,7 @@ ol {
   list-style-image: none;
 }
 dl, dd, p, figure, pre {
-  margin-bottom: 1.45rem !important;
+  margin-bottom: 1.45rem;
 }
 pre {
   font-size: 0.85rem;
@@ -301,12 +301,7 @@ li {
 ol li, ul li {
   padding-left: 0;
 }
-li > ol {
-  margin-left: 1.45rem;
-  margin-bottom: calc(1.45rem / 2);
-  margin-top: calc(1.45rem / 2);
-}
-li > ul {
+li > ol, li > ul {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
@@ -323,25 +318,15 @@ code {
   font-size: 1rem;
   line-height: 1.45rem;
 }
-kbd {
+kbd, samp {
   font-size: 0.85rem;
   line-height: 1.45rem;
 }
-samp {
-  font-size: 0.85rem;
-  line-height: 1.45rem;
-}
-abbr {
-  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
-  cursor: help;
-}
-acronym {
+abbr, acronym, abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
 abbr[title] {
-  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
-  cursor: help;
   text-decoration: none;
 }
 thead {

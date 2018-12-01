@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 module.exports = {
   siteMetadata: {
-    title: 'mar.codes',
+    title: 'tmergulhao',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -18,7 +18,7 @@ module.exports = {
         short_name: 'starter',
         start_url: '/',
         background_color: '#E5E5E5',
-        theme_color: '#663399',
+        theme_color: '#1EAED6',
         display: 'minimal-ui',
         icon: 'static/favicon.png',
       },

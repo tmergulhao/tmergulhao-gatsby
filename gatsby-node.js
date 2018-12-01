@@ -15,9 +15,14 @@ exports.createPages = ({ graphql, actions }) => {
         }`)
 
 		resolve(
-			blogsQuery.then(result => {
-				if (result.errors) { reject(result.errors) }
-                result.data.blogs.edges
+			blogsQuery.then(({ data, errors }) => {
+				if (errors) { reject(errors) }
+                
+                const blogs = data && data.blogs
+
+                if (!blogs) return
+
+                blogs.edges
                 .map(a => a.node)
                 .map(a => a.slug)
                 .forEach(slug => {
