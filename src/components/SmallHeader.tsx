@@ -18,6 +18,6 @@ const Header = () =>
 export default Header
 
 const Smaller = styled.div`
-  padding: 1.45rem 1.0875rem 0em;
+  padding: 1.45rem 0em 0em;
   padding-top: 1.45rem !important;
 `
