@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
+        name: 'tmergulhao',
         short_name: 'starter',
         start_url: '/',
         background_color: '#E5E5E5',
@@ -33,9 +33,9 @@ module.exports = {
         spaceId: process.env.spaceId,
         accessToken: process.env.accessToken,
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline'
   ],
 }

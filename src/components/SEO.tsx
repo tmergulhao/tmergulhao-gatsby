@@ -87,7 +87,9 @@ const SearchEngineOptimization = (pageProps : SEO = {}) =>
                 // { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png'},
                 // { rel: 'icon', type: 'image/png', sizes: '128x128', href: '/favicons/favicon-128x128.png'},
                 // { rel: 'icon', type: 'image/png', sizes: '196x196', href: '/favicons/favicon-196x196.png', },
-            ]}/>
+            ]}>
+                <html lang="en" />
+            </Helmet>
     }}/>
 
 export default SearchEngineOptimization
