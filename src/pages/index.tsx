@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Header from '../components/header'
 import Blogs from '../components/blogs'
 import Layout from '../components/layout'
+import SEO from '../components/SEO'
 
 const ProjectWrapper = styled.a`
   position: relative;
@@ -75,6 +76,7 @@ const IndexPage = ({
   }
 }) =>
   <>
+    <SEO/>
     <Header/>
     <Layout>{ renderAst(htmlAst) }</Layout>
   </>
@@ -85,6 +87,15 @@ export const query = graphql`{
       markdown:childMarkdownRemark {
         htmlAst
       }
+    }
+  }
+  site {
+    siteMetadata {
+        title
+        subtitle
+        description
+        keywords
+        twitterHandle
     }
   }
 }`

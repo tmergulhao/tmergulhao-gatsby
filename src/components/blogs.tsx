@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 
 const Blogs = () =>
@@ -12,9 +13,16 @@ const Blogs = () =>
                 node {
                     title
                     slug
+                    subtitle
                     content {
                         markdown:childMarkdownRemark {
                             excerpt(pruneLength: 140, truncate: false)
+                        }
+                    }
+                    coverImage {
+                        title
+                        fluid {
+                            src
                         }
                     }
                 }
@@ -28,26 +36,25 @@ const Blogs = () =>
         .map(a => a.node)
         .map(({
             slug,
-            title,
-            content: {
-                markdown: {
-                    excerpt
-                }
-            }
+            ...rest
         }, i) =>
         <Blog
             key={ i }
             path={ '/' + slug }
-            title={ title }
-            excerpt={ excerpt }
+            { ...rest }
         />)
     }
   />
 
 export default Blogs
 
-const Blog = ({ title, path, excerpt }) =>
-  <div onClick={ () => navigate('/' + path) } role="link" tabIndex={0}>
+const Blog = ({ title, path, subtitle, coverImage, content }) =>
+  <Wrapper onClick={ () => navigate('/' + path) } role="link" tabIndex={0}>
     <h3 className='accent'>{ title }</h3>
-    <p>{ excerpt }</p>
-  </div>
+    <p><strong>{ subtitle }</strong><br/>{ content.markdown.excerpt }</p>
+  </Wrapper>
+
+
+const Wrapper = styled.div`
+    margin-top: 1rem;
+`

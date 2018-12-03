@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Prism from 'prismjs'
 
+import SEO from '../components/SEO'
 import Header from '../components/SmallHeader'
 import Layout from '../components/layout'
 import Blogs from '../components/blogs'
@@ -37,19 +38,32 @@ class Blog extends React.PureComponent {
     render () {
 
         const {
+            blog,
+        } = this.props.data
+
+        const {
             title,
+            subtitle,
             content : {
                 markdown : {
                     htmlAst
                 }
             }
-        } = this.props.data.blog
+        } = blog
 
         return <>
+        <SEO
+            title={ 'tmergulhao — ' + title }
+            description={ subtitle }
+        />
         <Header/>
         <Layout>
             <Content>
-                <h1>{ title }</h1>
+                <h1>
+                    { title }
+                    <small>{ subtitle }</small>
+                </h1>
+                {/* <h2 className='accent'>{  }</h2> */}
                 { renderAst(htmlAst) }
             </Content>
             <h2>Other blogs</h2>
@@ -66,6 +80,7 @@ export default Blog
 export const query = graphql`
 fragment BlogFragment on ContentfulBlog {
     title
+    subtitle
     content {
         markdown:childMarkdownRemark {
             htmlAst

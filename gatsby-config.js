@@ -4,6 +4,10 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = {
   siteMetadata: {
     title: 'tmergulhao',
+    subtitle: "Tiago Mergulhão's website and portfolio",
+    description: 'Projects, tips, tricks and conventions about interaction design and programming',
+    keywords: 'design, interaction, programming, swift, d3, sketch app, figma, plugin, ios, development',
+    twitterHandle: 'tmergulhao'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

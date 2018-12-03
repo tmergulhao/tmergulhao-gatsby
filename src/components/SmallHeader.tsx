@@ -1,19 +1,34 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
-import { Wrapper, StyledLink } from './header'
+import { GatsbyConfig } from './SEO'
+import { Wrapper } from './header'
 
 const Header = () =>
-  <Wrapper>
-    <Smaller>
-      <h1 style={{ fontSize: '2em' }}>
-        <StyledLink to="/">
-          tmergulhao
-        </StyledLink>
-      </h1>
-    </Smaller>
-  </Wrapper>
+  <StaticQuery query={ graphql`
+  query {
+          site {
+              siteMetadata {
+                  title
+              }
+          }
+      }
+  `} render={ (props : GatsbyConfig) => {
+
+      const {
+          title,
+      } = props.site.siteMetadata
+
+      return <Wrapper>
+        <Smaller>
+          <h1 style={{ fontSize: '2em' }}>
+            <Link to="/">{ title }</Link>
+          </h1>
+        </Smaller>
+      </Wrapper>
+  }}/>
+
 
 export default Header
 

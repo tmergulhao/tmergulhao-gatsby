@@ -1,18 +1,36 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby'
+
+import { GatsbyConfig } from './SEO'
 
 const Header = () =>
-  <Wrapper>
-    <div>
-      <h1>
-        <StyledLink to="/">
-          tmergulhao
-        </StyledLink>
-      </h1>
-      <p>Tiago Mergulhão's website and portfolio</p>
-    </div>
-  </Wrapper>
+  <StaticQuery query={ graphql`
+  query {
+          site {
+              siteMetadata {
+                  title
+                  subtitle
+              }
+          }
+      }
+  `} render={ (props : GatsbyConfig) => {
+
+      const {
+          title,
+          subtitle,
+      } = props.site.siteMetadata
+
+      return <Wrapper>
+        <div>
+          <h1>
+            <Link to="/">{ title }</Link>
+            <small>{ subtitle }</small>
+          </h1>
+        </div>
+      </Wrapper>
+  }}/>
 
 export default Header
 
@@ -24,9 +42,4 @@ export const Wrapper = styled.div`
     padding: 1.45rem 1.0875rem 0em;
     padding-top: 6rem;
   }
-`
-
-export const StyledLink = styled(Link)`
-  color: hsla(0, 0%, 0%, 0.8);
-  text-decoration: none;
 `
