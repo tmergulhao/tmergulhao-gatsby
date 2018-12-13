@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Header from '../components/header'
-import Blogs from '../components/blogs'
+import Blogs from '../components/Blogs'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
 

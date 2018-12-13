@@ -7,7 +7,7 @@ import Prism from 'prismjs'
 import SEO from '../components/SEO'
 import Header from '../components/SmallHeader'
 import Layout from '../components/layout'
-import Blogs from '../components/blogs'
+import Blogs from '../components/Blogs'
 
 import 'prismjs/themes/prism.css'
 
@@ -68,7 +68,7 @@ class Blog extends React.PureComponent {
             </Content>
             <h2>Other blogs</h2>
             <TwoColumnWrapper>
-            <Blogs/>
+            <Blogs count={ 2 }/>
             </TwoColumnWrapper>
         </Layout>
         </>

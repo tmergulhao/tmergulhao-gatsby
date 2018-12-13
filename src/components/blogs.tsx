@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 
-const Blogs = () =>
+const Blogs = ({ count }) =>
     <StaticQuery
     query={graphql`
     query BlogListingQuery {
         blogs:allContentfulBlog(
-            sort: { fields: [ createdAt ] }
+            sort: {
+                fields: [ releaseDate ],
+                order: DESC
+            }
         ) {
             edges {
                 node {
@@ -34,6 +37,7 @@ const Blogs = () =>
         !data.blogs ? null :
         data.blogs.edges
         .map(a => a.node)
+        .filter((a, i) => !count || i < count)
         .map(({
             slug,
             ...rest
