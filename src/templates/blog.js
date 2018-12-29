@@ -101,11 +101,22 @@ const Content = styled.div`
   line-height: 140%;
 
   img, video {
-    margin: 30px 0 20px;
-    width: 100%;
+    margin: 30px auto 20px;
+    display: block;
+    width: auto;
+    height: auto;
     border-radius: 14px;
     box-sizing: border-box;
     overflow: hidden;
+    max-height: 50vh;
+    max-width: 100%;
+    transition: 0.5s;
+  }
+
+  img:hover {
+      transform: scale(1.2,1.2);
+      box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, .2);
+      border: 1px solid rgba(200, 200, 200, .2);
   }
 
   h2 {
