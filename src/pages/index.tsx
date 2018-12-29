@@ -20,6 +20,8 @@ const ProjectWrapper = styled.a`
     width: 64px;
     height: 64px;
     margin-left: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(200, 200, 200, .2);
   }
   h3 {
     color: #1EAED6;

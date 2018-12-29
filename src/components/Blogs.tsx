@@ -23,8 +23,14 @@ const Blogs = ({ count }) =>
                         }
                     }
                     coverImage {
-                        title
-                        fluid {
+                        fluid(
+                          toFormat: JPG,
+                          cropFocus: CENTER,
+                          resizingBehavior: FILL,
+                          maxWidth: 400,
+                          maxHeight: 240,
+                          quality: 100
+                        ) {
                             src
                         }
                     }
@@ -53,12 +59,21 @@ const Blogs = ({ count }) =>
 export default Blogs
 
 const Blog = ({ title, path, subtitle, coverImage, content }) =>
-  <Wrapper onClick={ () => navigate('/' + path) } role="link" tabIndex={0}>
+  <Wrapper href={ `${path}` } tabIndex={0}>
+    <img src={ coverImage && coverImage.fluid && coverImage.fluid.src }/>
     <h3 className='accent'>{ title }</h3>
     <p><strong>{ subtitle }</strong><br/>{ content.markdown.excerpt }</p>
   </Wrapper>
 
-
-const Wrapper = styled.div`
+const Wrapper = styled.a`
     margin-top: 1rem;
+    img {
+        margin-bottom: 10px;
+        border-radius: 14px;
+        transition: 0.5s;
+    }
+    &:hover img {
+        transform: scale(1.05,1.05);
+        box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, .2);
+    }
 `
