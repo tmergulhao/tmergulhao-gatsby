@@ -1,66 +1,75 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql, navigate } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 
 const Blogs = ({ count }) =>
     <StaticQuery
-    query={graphql`
-    query BlogListingQuery {
-        blogs:allContentfulBlog(
-            sort: {
-                fields: [ releaseDate ],
-                order: DESC
-            }
-        ) {
-            edges {
-                node {
-                    title
-                    slug
-                    subtitle
-                    content {
-                        markdown:childMarkdownRemark {
-                            excerpt(pruneLength: 140, truncate: false)
-                        }
-                    }
-                    coverImage {
-                        fluid(
-                          toFormat: JPG,
-                          cropFocus: CENTER,
-                          resizingBehavior: FILL,
-                          maxWidth: 400,
-                          maxHeight: 240,
-                          quality: 100
-                        ) {
-                            src
-                        }
-                    }
-                }
-            }
-        }
-    }
-    `}
-    render={data =>
-        !data.blogs ? null :
+    query={ query }
+    render={ data =>
+        data.blogs &&
         data.blogs.edges
         .map(a => a.node)
         .filter((a, i) => !count || i < count)
-        .map(({
-            slug,
-            ...rest
-        }, i) =>
-        <Blog
-            key={ i }
-            path={ '/' + slug }
-            { ...rest }
-        />)
+        .map((blog : Blog, i) =>
+            <BlogCard key={ i } { ...blog } />
+        )
     }
   />
 
 export default Blogs
 
-const Blog = ({ title, path, subtitle, coverImage, content }) =>
-  <Wrapper href={ `${path}` } tabIndex={0}>
-    <img src={ coverImage && coverImage.fluid && coverImage.fluid.src }/>
+interface Blog {
+    slug : string
+    title : string
+    path : string
+    subtitle : string
+    content : any
+    coverImage : {
+        fluid? : {
+            src : string
+        }
+    }
+}
+
+const query = graphql`
+query BlogListingQuery {
+    blogs:allContentfulBlog(
+        sort: {
+            fields: [ releaseDate ],
+            order: DESC
+        }
+    ) {
+        edges {
+            node {
+                title
+                slug
+                subtitle
+                content {
+                    markdown:childMarkdownRemark {
+                        excerpt(pruneLength: 140, truncate: false)
+                    }
+                }
+                coverImage {
+                    fluid(
+                      toFormat: JPG,
+                      cropFocus: CENTER,
+                      resizingBehavior: FILL,
+                      maxWidth: 500,
+                      maxHeight: 300,
+                      quality: 100
+                    ) {
+                        src
+                    }
+                }
+            }
+        }
+    }
+}
+`
+
+const BlogCard = ({ title, slug, subtitle, coverImage, content } : Blog) =>
+  <Wrapper href={ `/` + slug } tabIndex={0}>
+    <img alt={ 'Cover Image for ' + title } src={ coverImage && coverImage.fluid && coverImage.fluid.src }/>
     <h3 className='accent'>{ title }</h3>
     <p><strong>{ subtitle }</strong><br/>{ content.markdown.excerpt }</p>
   </Wrapper>

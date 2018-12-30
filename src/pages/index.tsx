@@ -49,14 +49,16 @@ const IconizedList = styled.div`
 `
 
 const TwoColumnWrapper = styled.div`
-  @media screen and (min-width: 40rem) {
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  @media screen and (min-width: 30rem) {
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    
   }
 `
 
-const renderAst = new Rehype({
+export const renderer = new Rehype({
 	createElement: React.createElement,
 	components: {
         'twocolumn': TwoColumnWrapper,
@@ -80,7 +82,7 @@ const IndexPage = ({
   <>
     <SEO/>
     <Header/>
-    <Layout>{ renderAst(htmlAst) }</Layout>
+    <Layout>{ renderer(htmlAst) }</Layout>
   </>
 
 export const query = graphql`{

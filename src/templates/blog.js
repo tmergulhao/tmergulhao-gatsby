@@ -1,9 +1,9 @@
 import React from 'react'
-import Rehype from 'rehype-react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Prism from 'prismjs'
 
+import { renderer } from '../pages/index'
 import SEO from '../components/SEO'
 import Header from '../components/SmallHeader'
 import Layout from '../components/layout'
@@ -18,16 +18,6 @@ import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-scss'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-ruby'
-
-// import SearchEngineOptimization from './SearchEngineOptimization'
-
-const renderAst = new Rehype({
-	createElement: React.createElement,
-	components: {
-        // 'dropboxvideo': DropboxVideo,
-        // 'sectionimage': SectionImage
-	}
-}).Compiler
 
 class Blog extends React.PureComponent {
 
@@ -48,13 +38,17 @@ class Blog extends React.PureComponent {
                 markdown : {
                     htmlAst
                 }
-            }
+            },
+            coverImage
         } = blog
+
+        const image = coverImage && coverImage.fluid && coverImage.fluid.src
 
         return <>
         <SEO
             title={ 'tmergulhao — ' + title }
             description={ subtitle }
+            image={ image }
         />
         <Header/>
         <Layout>
@@ -63,8 +57,8 @@ class Blog extends React.PureComponent {
                     { title }
                     <small>{ subtitle }</small>
                 </h1>
-                {/* <h2 className='accent'>{  }</h2> */}
-                { renderAst(htmlAst) }
+                <img alt={ 'Cover Image for ' + title } src={ image }/>
+                { renderer(htmlAst) }
             </Content>
             <h2>Other blogs</h2>
             <TwoColumnWrapper>
@@ -74,7 +68,7 @@ class Blog extends React.PureComponent {
         </>
     }
 }
-  
+
 export default Blog
 
 export const query = graphql`
@@ -84,6 +78,17 @@ fragment BlogFragment on ContentfulBlog {
     content {
         markdown:childMarkdownRemark {
             htmlAst
+        }
+    }
+    coverImage {
+        fluid(
+          toFormat: JPG,
+          cropFocus: CENTER,
+          resizingBehavior: FILL,
+          maxWidth: 700,
+          quality: 100
+        ) {
+            src
         }
     }
 }
