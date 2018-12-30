@@ -3,38 +3,42 @@ import Rehype from 'rehype-react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
+import Project from '../components/Project'
 import Header from '../components/header'
 import Blogs from '../components/Blogs'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
 
-const ProjectWrapper = styled.a`
-  position: relative;
-  & > * {
-    margin-left: 80px;
+interface HomePage {
+  data : {
+    page : {
+      content : {
+        markdown : {
+          htmlAst : any
+        }
+      }
+    }
   }
-  & img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 64px;
-    height: 64px;
-    margin-left: 0;
-    border-radius: 14px;
-    border: 1px solid rgba(200, 200, 200, .2);
-  }
-  h3 {
-    color: #1EAED6;
-  }
-  p:first-child {
-    margin-bottom: 0;
-  }
-`
+}
 
-const Project = ({ children, href }) =>
-  <ProjectWrapper href={ href }>
-    { children }
-  </ProjectWrapper>
+const IndexPage = (home : HomePage) =>
+  <>
+    <SEO/>
+    <Header/>
+    <Layout>{ renderer(home.data.page.content.markdown.htmlAst) }</Layout>
+  </>
+
+export default IndexPage
+
+export const query = graphql`{
+  page:contentfulPage(path: { eq: "index" }) {
+    content {
+      markdown:childMarkdownRemark {
+        htmlAst
+      }
+    }
+  }
+}`
 
 const IconizedList = styled.div`
   ul > li > img {
@@ -67,41 +71,3 @@ export const renderer = new Rehype({
         'project': Project,
 	}
 }).Compiler
-
-const IndexPage = ({
-  data: {
-    page: {
-      content: {
-        markdown: {
-          htmlAst
-        }
-      }
-    }
-  }
-}) =>
-  <>
-    <SEO/>
-    <Header/>
-    <Layout>{ renderer(htmlAst) }</Layout>
-  </>
-
-export const query = graphql`{
-  page:contentfulPage(path: { eq: "index" }) {
-    content {
-      markdown:childMarkdownRemark {
-        htmlAst
-      }
-    }
-  }
-  site {
-    siteMetadata {
-        title
-        subtitle
-        description
-        keywords
-        twitterHandle
-    }
-  }
-}`
-
-export default IndexPage
