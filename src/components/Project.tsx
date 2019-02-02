@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const Project = ({ children, href }) =>
-  <Wrapper href={ href }>
+const Project = ({ children, href, hasborder }) =>
+  <Wrapper href={ href } hasBorder={ hasborder }>
     { children }
   </Wrapper>
 
@@ -13,7 +13,7 @@ const Wrapper = styled.a`
   & > * {
     margin-left: 80px;
   }
-  & img {
+  & > p > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -21,7 +21,9 @@ const Wrapper = styled.a`
     height: 64px;
     margin-left: 0;
     border-radius: 14px;
-    border: 1px solid rgba(200, 200, 200, .2);
+    ${ props => props.hasBorder && css`
+      border: 1px solid rgba(200, 200, 200, .2);
+    `}
   }
   h3 {
     color: #1EAED6;
