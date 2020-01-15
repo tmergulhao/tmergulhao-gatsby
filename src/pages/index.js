@@ -30,7 +30,7 @@ const IndexPage = () =>
         <h3>Design+Code</h3>
         <p className="description">Tech learning platform for beginners and designers</p>
       </a>
-      <a style={{ display: "none" }} className="project" href="https://apps.apple.com/za/app/ella-sight-singing/id1301456113">
+      <a className="project" href="https://apps.apple.com/za/app/ella-sight-singing/id1301456113">
         <img alt="Ella - Sight Singing" src="./Ella.png"/>
         <h3>Ella - Sight Singing</h3>
         <p className="description">Train your ear by singing</p>
