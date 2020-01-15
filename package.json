@@ -2,37 +2,27 @@
   "name": "tmergulhao.com",
   "description": "Tiago Mergulhão's website and portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Tiago Mergulhão <me@tmergulhao.com>",
   "dependencies": {
-    "@types/styled-components": "^4.1.1",
-    "dotenv": "^6.1.0",
-    "gatsby": "^2.0.55",
-    "gatsby-image": "^2.0.15",
-    "gatsby-plugin-manifest": "^2.0.5",
-    "gatsby-plugin-netlify": "^2.0.5",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sass": "^2.0.4",
-    "gatsby-plugin-sharp": "^2.0.7",
-    "gatsby-plugin-styled-components": "^3.0.3",
-    "gatsby-plugin-typescript": "^2.0.1",
-    "gatsby-remark-prismjs": "^3.0.3",
-    "gatsby-source-contentful": "^2.0.15",
-    "gatsby-source-filesystem": "^2.0.4",
-    "gatsby-transformer-remark": "^2.1.12",
-    "gatsby-transformer-sharp": "^2.1.4",
-    "node-sass": "^4.10.0",
-    "prismjs": "^1.15.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.0",
-    "rehype": "^7.0.0",
-    "rehype-highlight": "^2.2.1",
-    "rehype-react": "^3.1.0",
-    "styled-components": "^4.1.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.6",
-    "unified": "^7.0.2"
+    "gatsby": "^2.18.12",
+    "gatsby-image": "^2.2.34",
+    "gatsby-plugin-manifest": "^2.2.31",
+    "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-sass": "^2.1.27",
+    "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-plugin-typescript": "^2.1.26",
+    "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-transformer-sharp": "^2.3.7",
+    "node-sass": "^4.13.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby"
@@ -41,13 +31,17 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "npm run develop"
-  },
-  "devDependencies": {
-    "prettier": "^1.14.2"
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
